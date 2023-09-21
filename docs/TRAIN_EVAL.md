@@ -18,7 +18,7 @@ AMOTP	1.300
 RECALL	0.489
 ```
 
-**Note**: If you evaluate with different number of GPUs rather than 8, the results might be slightly different.
+**Note**: If you evaluate with different number of GPUs rather than 8, you will need to adjust the command above to specify the correct number of GPUs and the results might be slightly different.
 
 ## GPU Requirements <a name="gpu"></a>
 
