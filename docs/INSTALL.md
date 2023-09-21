@@ -28,6 +28,7 @@ export PATH=YOUR_GCC_PATH/bin:$PATH
 ```shell
 export CUDA_HOME=YOUR_CUDA_PATH/
 # Eg: export CUDA_HOME=/mnt/cuda-11.1/
+# or  export CUDA_HOME=/usr/local/cuda-11.3/
 ```
 
 

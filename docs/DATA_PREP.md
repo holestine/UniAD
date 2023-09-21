@@ -54,6 +54,7 @@ UniAD
 │   ├── nuscenes/
 │   │   ├── can_bus/
 │   │   ├── maps/
+│   │   │   ├── expansion/
 │   │   ├── samples/
 │   │   ├── sweeps/
 │   │   ├── v1.0-test/
