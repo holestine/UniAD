@@ -6,6 +6,7 @@ from nuscenes.prediction import (PredictHelper,
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import pickle
+import os
 
 
 def classify_label_type_to_id(label_type: str) -> int:
@@ -45,7 +46,7 @@ def k_means_anchors(k: int, future_traj_all: np.ndarray) -> np.ndarray:
     traj_dim = prototype_traj.shape[2]
     ds_size = future_traj_all.shape[0]
     trajectories = future_traj_all
-    clustering = KMeans(n_clusters=k).fit(trajectories.reshape((ds_size, -1)))
+    clustering = KMeans(n_clusters=k, n_init=10).fit(trajectories.reshape((ds_size, -1)))
     anchors = np.zeros((k, traj_len, traj_dim))
     for i in range(k):
         anchors[i] = np.mean(trajectories[clustering.labels_ == i], axis=0)
@@ -61,8 +62,9 @@ def run(num_modes: int = 6, predicted_traj_len: int = 12) -> None:
         num_modes (int, optional): The number of clusters for k-means algorithm. Defaults to 6.
         predicted_traj_len (int, optional): The length of the predicted trajectories. Defaults to 12.
     """
+    dataroot='./data/'
     nusc = NuScenes(version='v1.0-trainval',
-                    dataroot='/data3/nuscenes', verbose=False)
+                    dataroot=os.path.join(dataroot, "nuscenes"), verbose=False)
     predict_helper = PredictHelper(nusc)
 
     all_fut_trajectories = []
@@ -92,7 +94,11 @@ def run(num_modes: int = 6, predicted_traj_len: int = 12) -> None:
     kmeans_anchors = np.stack(kmeans_anchors)
 
     # This file needs to be moved to .../data/others/
-    pickle.dump(kmeans_anchors, open('motion_anchor_infos_mode6.pkl', 'wb'))
+    out_dir = os.path.join(dataroot, 'others')
+    if not os.path.exists(out_dir):
+        os.makedirs(out_dir)
+    out_file = os.path.join(out_dir, 'motion_anchor_infos_mode6.pkl')
+    pickle.dump(kmeans_anchors, open(out_file, 'wb'))
 
 
 if __name__ == '__main__':
