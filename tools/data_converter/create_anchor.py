@@ -98,7 +98,7 @@ def run(num_modes: int = 6, predicted_traj_len: int = 12) -> None:
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
     out_file = os.path.join(out_dir, 'motion_anchor_infos_mode6.pkl')
-    pickle.dump(kmeans_anchors, open(out_file, 'wb'))
+    pickle.dump({'anchors_all': kmeans_anchors}, open(out_file, 'wb'))
 
 
 if __name__ == '__main__':
