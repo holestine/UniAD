@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "justMyCode": true
+            "justMyCode": false
         },
         {
             "name": "Prepare UniAD Data",
@@ -20,7 +20,7 @@
             "program": "tools/create_data.py",
             "console": "integratedTerminal",
             "purpose": ["debug-in-terminal"],
-            "justMyCode": true,
+            "justMyCode": false,
             "args": [
                 "nuscenes",
                 "--root-path",
@@ -43,7 +43,7 @@
             "program": "tools/data_converter/create_anchor.py",
             "console": "integratedTerminal",
             "purpose": ["debug-in-terminal"],
-            "justMyCode": true,
+            "justMyCode": false,
             "args": [],
         },
 //        {
@@ -67,7 +67,7 @@
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
             "purpose": ["debug-in-terminal"],
-            "justMyCode": true,
+            "justMyCode": false,
             "env": {"PYTHONPATH": "${workspaceFolder}/"},
             "args": [
                 "--nproc_per_node",
@@ -93,7 +93,7 @@
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
             "purpose": ["debug-in-terminal"],
-            "justMyCode": true,
+            "justMyCode": false,
             "env": {"PYTHONPATH": "${workspaceFolder}/"},
             "args": [
                 "--nproc_per_node",
@@ -131,7 +131,7 @@
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
             "purpose": ["debug-in-terminal"],
-            "justMyCode": true,
+            "justMyCode": false,
             "env": {"PYTHONPATH": "${workspaceFolder}/"},
             "args": [
                 "--nproc_per_node",
@@ -161,7 +161,7 @@
             "program": "tools/analysis_tools/visualize/run.py",
             "console": "integratedTerminal",
             "purpose": ["debug-in-terminal"],
-            "justMyCode": true,
+            "justMyCode": false,
             "env": {"PYTHONPATH": "${workspaceFolder}/"},
             "args": [
                 "--predroot",
