@@ -276,7 +276,7 @@ class Visualizer:
             size = (width, height)
             img_array.append(img)
         out = cv2.VideoWriter(
-            out_path, cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
+            os.path.join(folder_path, out_path), cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
         for i in range(len(img_array)):
             out.write(img_array[i])
         out.release()
