@@ -6,7 +6,7 @@ from pyquaternion import Quaternion
 from nuscenes.prediction import PredictHelper, convert_local_coords_to_global
 from tools.analysis_tools.visualize.render.base_render import BaseRender
 from tools.analysis_tools.visualize.utils import color_mapping, AgentPredictionData
-
+from nuscenes.utils.data_classes import LidarPointCloud
 
 class BEVRender(BaseRender):
     """
@@ -261,4 +261,4 @@ class BEVRender(BaseRender):
     def render_legend(self):
         legend = cv2.imread('sources/legend.png')
         legend = cv2.cvtColor(legend, cv2.COLOR_BGR2RGB)
-        self.axes.imshow(legend, extent=(23, 51.2, -50, -40))
+        self.axes.imshow(legend, extent=(0, 50, -50, -35))

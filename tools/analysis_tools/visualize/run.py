@@ -275,8 +275,10 @@ class Visualizer:
             height, width, channel = img.shape
             size = (width, height)
             img_array.append(img)
+        #fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+        fourcc = cv2.VideoWriter_fourcc('M','J','P','G')
         out = cv2.VideoWriter(
-            os.path.join(folder_path, out_path), cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
+            os.path.join(folder_path, out_path), fourcc, fps, size)
         for i in range(len(img_array)):
             out.write(img_array[i])
         out.release()
@@ -289,7 +291,7 @@ def main(args):
         with_pred_box=True,
         with_pred_traj=True,
         show_gt_boxes=False,
-        show_lidar=False,
+        show_lidar=True,
         show_command=True,
         show_hd_map=False,
         show_sdc_car=True,
@@ -325,7 +327,7 @@ def main(args):
             viser.visualize_cam(sample_token, os.path.join(args.out_folder, str(i).zfill(3)))
             viser.combine(os.path.join(args.out_folder, str(i).zfill(3)))
 
-    viser.to_video(args.out_folder, args.demo_video, fps=4, downsample=2)
+    viser.to_video(args.out_folder, args.demo_video, fps=4, downsample=1)
 
 
 if __name__ == '__main__':
